@@ -1,12 +1,42 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+<div id="app">
+  <NavBar />
+  <div class="divSuma" >
+    {{resultSuma()}}
+    </div>
+    <h1 v-if="show">Vue is awesome!</h1>
+    <button @click="show=true">Click</button>
+
+    <p v-for="element in grocerias" :key="element">{{element.name}}</p>
+  <Footer />
+</div>
 </template>
+
+
+<script>
+import NavBar from './components/NavBar.vue'
+import Footer from './components/Footer.vue'
+
+export default ({
+  data() {
+    return{
+      show: false,
+      grocerias: [{name: "Tomate"}, {name: "Lechuga"}],
+    }
+},
+//     methods() {
+//     resultSuma()
+//     return {2+2},
+//     }
+// }
+
+components: {
+      NavBar,
+      Footer,
+},
+
+})
+</script>
 
 <style>
 #app {
@@ -28,5 +58,11 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.divSuma{
+  display: flex;
+  border: solid red 4px;
+  justify-content: center;
 }
 </style>
